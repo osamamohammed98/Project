@@ -85,7 +85,7 @@
             android:layout_height="@dimen/_35sdp"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/_24sdp"
-            android:background="@drawable/fb"
+            android:background="@mipmap/fb"
             tools:targetApi="lollipop" />
 
         <ImageButton
@@ -96,7 +96,7 @@
             android:layout_height="@dimen/_35sdp"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/_6sdp"
-            android:background="@drawable/google"
+            android:background="@mipmap/google"
             tools:targetApi="lollipop" />
 
     </LinearLayout>

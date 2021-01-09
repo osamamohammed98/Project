@@ -2,18 +2,33 @@ package com.eeducationgo.tectik.social.presenter;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 
-import com.eeducationgo.tectik.MainActivity;
 import com.eeducationgo.tectik.NameActivity;
 import com.eeducationgo.tectik.R;
 import com.eeducationgo.tectik.social.view.SocialView;
 import com.eeducationgo.tectik.util.AppShareData;
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
+
+import java.util.Arrays;
+import java.util.concurrent.Executor;
 
 public class SocialPresenter {
-   private Activity activity;
-   private SocialView view;
+    private Activity activity;
+    private SocialView view;
+    private String TAG_CANCEL = "TAG";
+    private String TAG_ERROR = "ERROR";
+    private static final String TAG = "SocialPresenter";
 
     public SocialPresenter(Activity activity, SocialView socialView) {
         this.activity = activity;
@@ -70,4 +85,92 @@ public class SocialPresenter {
         inputUserEmail.setError(null);
         inputPassword.setError(null);
     }
+
+    public void LoginManager(CallbackManager callbackManager) {
+        try {
+            if (callbackManager == null) {
+                return;
+            }
+            LoginManager.getInstance().logInWithReadPermissions(activity, Arrays.asList("public_profile", "email", "user_birthday", "user_friends"));
+            LoginManager.getInstance().registerCallback(callbackManager,
+                    new FacebookCallback<LoginResult>() {
+                        @Override
+                        public void onSuccess(LoginResult loginResult) {
+                            // setGraphRequest(loginResult);
+                            checkTokenSignIn();
+                        }
+
+                        @Override
+                        public void onCancel() {
+                            Log.d(TAG_CANCEL, "On cancel");
+                        }
+
+                        @Override
+                        public void onError(FacebookException error) {
+                            Log.d(TAG_ERROR, error.toString());
+                            view.showErrorMessage(error.toString());
+                        }
+                    });
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.d(TAG_ERROR, e.toString());
+            view.showErrorMessage(e.toString());
+        }
+    }//end
+
+    private void checkTokenSignIn() {
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        boolean isLoggedIn = accessToken != null && !accessToken.isExpired();
+        Log.e("KEY", "" + accessToken.getToken());
+        if (isLoggedIn) {
+            view.showSuccessMessage("success operation");
+        } else {
+
+            view.showErrorMessage(activity.getString(R.string.fb_excit));
+        }
+    }//end
+
+
+
+    //todo this for google
+
+    public void authByGoogle(String idToken, FirebaseAuth auth) {
+        firebaseAuthWithGoogle(idToken, auth);
+    }
+
+    // [START auth_with_google]
+    private void firebaseAuthWithGoogle(String idToken, FirebaseAuth auth) {
+        // [START_EXCLUDE silent]
+        view.showProgress();
+        // [END_EXCLUDE]
+        AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
+        try {
+            auth.signInWithCredential(credential)
+                    .addOnCompleteListener((Executor) this, task -> {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "signInWithCredential:success");
+                            FirebaseUser user = auth.getCurrentUser();
+                            view.hideProgress();
+                            view.showSuccessMessage("signInWithCredential:success");
+                            activity.startActivity(new Intent(activity, NameActivity.class));
+                            activity.finish();
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "signInWithCredential:failure", task.getException());
+                            view.showSuccessMessage("Authentication Failed.");
+                            view.hideProgress();
+                        }
+
+                        // [START_EXCLUDE]
+                        view.hideProgress();
+                        // [END_EXCLUDE]
+                    });
+        } catch (Exception e) {
+            e.printStackTrace();
+            view.showSuccessMessage(e.toString());
+            view.hideProgress();
+        }
+    }
+    // [END auth_with_google]
 }

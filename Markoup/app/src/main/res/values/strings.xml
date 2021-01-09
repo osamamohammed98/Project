@@ -1,5 +1,7 @@
 <resources>
 
+    <string name="facebook_app_id" translatable="false">412969433456406</string>
+    <string name="fb_login_protocol_scheme" translatable="false">fb412969433456406</string>
 
     <string-array name="cars">
         <item>car1</item>
@@ -67,6 +69,7 @@
     <string name="required_filed">this filed is required</string>
     <string name="password_matcher">please make your password greater than 8 char</string>
     <string name="example_example_com">example@example.com</string>
+    <string name="fb_excit">your account is exist</string>
 
     <string-array name="voyage_filter">
         <item>Rating</item>

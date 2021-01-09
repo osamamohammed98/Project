@@ -60,6 +60,10 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.3'
     //browser
     implementation "androidx.browser:browser:1.2.0"
+    //fb
+    implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
+    //google auth
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
 
 
 }
