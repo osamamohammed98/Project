@@ -62,6 +62,11 @@
     <string name="upload">upload</string>
     <string name="register_as_company">Register as Company</string>
     <string name="forget_paas">Forgot password ?</string>
+    <string name="enter_email">please enter your email</string>
+    <string name="matcher_email">please make your email like this example@example.com</string>
+    <string name="required_filed">this filed is required</string>
+    <string name="password_matcher">please make your password greater than 8 char</string>
+    <string name="example_example_com">example@example.com</string>
 
     <string-array name="voyage_filter">
         <item>Rating</item>

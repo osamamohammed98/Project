@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".CodeVarActivity">
+        tools:context=".code.CodeVarActivity">
 
         <ImageView
             android:layout_width="match_parent"
@@ -38,10 +38,10 @@
             android:inputType="number"
             android:textColor="#000000"
             app:itemHeight="@dimen/_45sdp"
-            app:itemWidth="@dimen/_60sdp"
+            app:itemWidth="@dimen/_40sdp"
             app:lineWidth="@dimen/_1sdp"
             android:layout_gravity="center"
-            app:itemCount="4"
+            app:itemCount="6"
             app:lineColor="#707070"
             app:viewType="line" />
 
@@ -58,5 +58,17 @@
             android:textAllCaps="false"
             android:textColor="@color/colorOrange"
             tools:targetApi="lollipop" />
+        <Button
+            android:id="@+id/button_skip_email_regesteration"
+            android:layout_width="@dimen/_168sdp"
+            android:layout_height="@dimen/_45sdp"
+            android:fontFamily="@font/cairo"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:backgroundTint="@color/colorOrange"
+            android:text="@string/skip"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary"
+             />
     </LinearLayout>
 </layout>
