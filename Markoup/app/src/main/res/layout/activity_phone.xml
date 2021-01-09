@@ -52,12 +52,11 @@
 
         <Button
             android:id="@+id/button_next_register_new_account"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/_168sdp"
+            android:layout_height="@dimen/_45sdp"
             android:layout_gravity="center"
             android:backgroundTint="@color/colorPrimary"
             android:layout_marginTop="@dimen/_30sdp"
-            android:paddingHorizontal="@dimen/_38sdp"
             android:fontFamily="@font/cairo"
             android:text="@string/next"
             android:textAllCaps="false"
