@@ -1,6 +1,7 @@
 package com.eeducationgo.tectik;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
+import com.eeducationgo.tectik.databinding.ActivityRegistrationBinding;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class Registration extends AppCompatActivity {
@@ -22,10 +24,11 @@ public class Registration extends AppCompatActivity {
     TextInputEditText first, second, third, fourth, displayName;
     ProgressBar progress;
 
+    private ActivityRegistrationBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registration);
+        binding = DataBindingUtil.setContentView(Registration.this ,R.layout.activity_registration);
 
         linkUp();
 
@@ -46,12 +49,14 @@ public class Registration extends AppCompatActivity {
                 performLogin();
             }
         });
-        register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                performRegister();
-            }
+        register.setOnClickListener(view -> {
+           // performRegister();
+            startActivity(new Intent(getBaseContext() , PhoneActivity.class));
         });
+
+        binding.buttonRegisterCompany.setOnClickListener(v -> startActivity(new Intent(getBaseContext() , PhoneActivity.class)));
+
+
         nextRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

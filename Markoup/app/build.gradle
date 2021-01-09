@@ -16,9 +16,18 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+    buildFeatures{
+        dataBinding = true
+        viewBinding = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -38,6 +47,10 @@ dependencies {
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
     implementation 'com.github.pwiniars:SlideDateTimePicker:1.0.8'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+    //sdp
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    //pin code
+    implementation 'com.github.mukeshsolanki:android-otpview-pinview:2.1.0'
 
 
 }

@@ -1,4 +1,13 @@
 <resources>
+
+
+    <string-array name="cars">
+        <item>car1</item>
+        <item>car2</item>
+        <item>car3</item>
+        <item>car4</item>
+        <item>car5</item>
+    </string-array>
     <string name="app_name">Markoup</string>
     <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
     <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
@@ -47,6 +56,12 @@
     <string name="_35_dienar">35 Dienar</string>
     <string name="time_left">1 hour left for the trip</string>
     <string name="trip_date">Trip date:</string>
+    <string name="select_vehicle_type">Select Vehicle Type</string>
+    <string name="enter_vehicle_number">Enter Vehicle Number</string>
+    <string name="upload_identification_id">Upload Identification ID</string>
+    <string name="upload">upload</string>
+    <string name="register_as_company">Register as Company</string>
+    <string name="forget_paas">Forgot password ?</string>
 
     <string-array name="voyage_filter">
         <item>Rating</item>

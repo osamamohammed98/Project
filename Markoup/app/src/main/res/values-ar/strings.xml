@@ -32,4 +32,10 @@
     <string name="_5_minutes_to_station">"8 دقائق الي المحطة "</string>
     <string name="my_account">حسابي</string>
     <string name="time_left">باقي ساعة علي موعد الرحلة</string>
+    <string name="select_vehicle_type">Select Vehicle Type</string>
+    <string name="enter_vehicle_number">Enter Vehicle Number</string>
+    <string name="upload_identification_id">Upload Identification ID</string>
+    <string name="upload">upload</string>
+    <string name="register_as_company">Register as Company</string>
+    <string name="forget_paas">Forgot password ?</string>
 </resources>
